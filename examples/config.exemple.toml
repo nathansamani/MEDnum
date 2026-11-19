@@ -1,0 +1,54 @@
+# Exemple de configuration MEDnum. Toute clé absente garde sa valeur par défaut
+# (voir mednum/config.py). Usage : mednum -c config.exemple.toml <commande> ...
+
+tesseract_lang = "fra"            # ex. "eng", "fra+eng"
+watermarks = []                   # ex. ["^diffusion interdite", "www\\.exemple\\.org"]
+image_pattern = "page-{page}.png" # nom des images ; {page} = identifiant de page
+
+[audit]
+blank_ink = 0.001
+min_words_inked = 15
+lost_words_max = 20
+foreign_words = ["the", "which", "where", "of the"]
+foreign_min_hits = 5
+
+[correct]
+max_span = 2
+min_len = 3
+min_ratio = 0.5
+
+[zero_fix]
+codes = []                        # ex. ["T", "N", "M"] pour une classification alphanumérique
+
+# Lettres de marge : bande de marge, tailles relatives, couleurs et forme -> lettre.
+[markers.letter]
+zone_x = [0.035, 0.11]
+holes_to_letter = { "1" = "A", "2" = "B" }
+
+[markers.letter.colors.noir]
+max = [120, 120, 120]
+
+[markers.letter.colors.rouge]
+min = [130, 0, 0]
+max = [255, 130, 120]
+diff = [["r", "g", 60]]
+
+# Carrés colorés + cadre : une entrée par lettre, avec sa couleur et son nombre de trous.
+[markers.square]
+zones_x = [[0.0, 0.16], [0.84, 1.0]]
+
+[markers.square.labels.A]
+min = [200, 0, 0]
+max = [255, 170, 150]
+diff = [["r", "g", 60]]
+holes = 1
+
+[markers.square.labels.B]
+min = [0, 120, 0]
+max = [90, 255, 255]
+diff = [["g", "r", 70], ["g", "b", 30]]
+holes = 2
+
+[review]
+rows_per_sheet = 24
+# font = "/chemin/vers/une/police.ttf"

@@ -1,0 +1,20 @@
+# Environnements et caches
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+
+# Données de travail : ne jamais versionner de pages, de scans ou de livres
+/work/
+/data/
+/out/
+examples/output/
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.tif
+*.tiff

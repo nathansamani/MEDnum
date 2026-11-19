@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mednum"
+version = "0.1.0"
+description = "Numériser des manuels scannés avec des modèles de vision locaux, puis vérifier et corriger le résultat."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Les auteurs de MEDnum" }]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "Pillow>=10",
+    "pymupdf>=1.23",
+]
+
+[project.optional-dependencies]
+mlx = ["mlx-vlm>=0.1"]
+test = ["pytest>=7"]
+
+[project.scripts]
+mednum = "mednum.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["mednum*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore:builtin type .* has no __module__ attribute:DeprecationWarning"]
